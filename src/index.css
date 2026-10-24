@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------------------------
+   SNET Theme — dark network-ops palette
+--------------------------------------------------- */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-slate-950 text-slate-200 font-sans antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  @apply bg-signal-500/40 text-white;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #050b14;
+}
+::-webkit-scrollbar-thumb {
+  background: #1b2f4d;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #152540;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer components {
+  /* Section heading eyebrow — used sparingly, not on every section */
+  .panel {
+    @apply relative rounded-2xl border border-white/[0.06] bg-ink-900/70 backdrop-blur-sm;
+  }
+
+  .panel-hover {
+    @apply transition-all duration-300 hover:border-signal-400/30 hover:-translate-y-1 hover:shadow-signal;
+  }
+
+  .grid-backdrop {
+    background-image: theme('backgroundImage.grid-lines');
+    background-size: 3.5rem 3.5rem;
+    -webkit-mask-image: radial-gradient(ellipse 65% 55% at 50% 0%, #000 60%, transparent 100%);
+    mask-image: radial-gradient(ellipse 65% 55% at 50% 0%, #000 60%, transparent 100%);
+  }
+
+  .text-gradient {
+    background: linear-gradient(120deg, #ffffff 20%, #7fe8e0 65%, #3fd6c9 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-signal-500 to-volt-500 px-7 py-3.5 text-sm font-semibold text-ink-950 shadow-signal transition-transform duration-200 hover:scale-[1.03] active:scale-[0.98];
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.02] px-7 py-3.5 text-sm font-semibold text-slate-200 transition-all duration-200 hover:border-signal-400/50 hover:text-white;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-1.5 text-xs font-medium text-slate-300;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
