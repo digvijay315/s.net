@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 /* ---------------------------------------------------
-   SNET Theme — dark network-ops palette
+   SNET Theme — Alliance Broadband Light Palette
 --------------------------------------------------- */
 
 html {
@@ -11,12 +11,12 @@ html {
 }
 
 body {
-  @apply bg-slate-950 text-slate-200 font-sans antialiased;
+  @apply bg-white text-slate-800 font-sans antialiased;
   overflow-x: hidden;
 }
 
 ::selection {
-  @apply bg-signal-500/40 text-white;
+  @apply bg-sky-500/30 text-sky-900;
 }
 
 /* Scrollbar */
@@ -24,14 +24,14 @@ body {
   width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #050b14;
+  background: #f1f5f9;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1b2f4d;
+  background: #cbd5e1;
   border-radius: 999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #152540;
+  background: #94a3b8;
 }
 
 @layer utilities {
@@ -43,38 +43,62 @@ body {
 @layer components {
   /* Section heading eyebrow — used sparingly, not on every section */
   .panel {
-    @apply relative rounded-2xl border border-white/[0.06] bg-ink-900/70 backdrop-blur-sm;
+    @apply relative rounded-2xl border border-slate-200 bg-white shadow-sm backdrop-blur-sm;
   }
 
   .panel-hover {
-    @apply transition-all duration-300 hover:border-signal-400/30 hover:-translate-y-1 hover:shadow-signal;
+    @apply transition-all duration-300 hover:border-sky-400 hover:-translate-y-1 hover:shadow-lg;
   }
 
   .grid-backdrop {
-    background-image: theme('backgroundImage.grid-lines');
-    background-size: 3.5rem 3.5rem;
+    background-image: linear-gradient(to right, rgba(14, 165, 233, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(14, 165, 233, 0.05) 1px, transparent 1px);
+    background-size: 3rem 3rem;
     -webkit-mask-image: radial-gradient(ellipse 65% 55% at 50% 0%, #000 60%, transparent 100%);
     mask-image: radial-gradient(ellipse 65% 55% at 50% 0%, #000 60%, transparent 100%);
   }
 
   .text-gradient {
-    background: linear-gradient(120deg, #ffffff 20%, #7fe8e0 65%, #3fd6c9 100%);
+    background: linear-gradient(120deg, #0284c7 20%, #0369a1 65%, #0f172a 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-signal-500 to-volt-500 px-7 py-3.5 text-sm font-semibold text-ink-950 shadow-signal transition-transform duration-200 hover:scale-[1.03] active:scale-[0.98];
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-sky-500 to-blue-600 px-7 py-3.5 text-sm font-bold text-white shadow-md shadow-sky-500/20 transition-all duration-200 hover:from-sky-600 hover:to-blue-700 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98];
   }
 
   .btn-outline {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.02] px-7 py-3.5 text-sm font-semibold text-slate-200 transition-all duration-200 hover:border-signal-400/50 hover:text-white;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-7 py-3.5 text-sm font-bold text-slate-700 shadow-sm transition-all duration-200 hover:border-sky-500 hover:text-sky-600 hover:bg-sky-50/50;
   }
 
   .badge {
-    @apply inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-1.5 text-xs font-medium text-slate-300;
+    @apply inline-flex items-center gap-2 rounded-full border border-sky-200 bg-sky-50 px-3.5 py-1.5 text-xs font-semibold text-sky-700;
   }
+
+  .blink-me {
+    animation: blinker 1s linear infinite;
+  }
+}
+
+@keyframes blinker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
 }
 
 @media (prefers-reduced-motion: reduce) {

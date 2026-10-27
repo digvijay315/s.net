@@ -10,6 +10,7 @@ export default function Services() {
         eyebrow="Services"
         title="Nine services, one accountable team"
         description="Sale, installation, upgrades and annual maintenance — across every system that keeps a building connected and secure."
+        bgImage="/images/page-headers/bg-roi.png"
       />
 
       <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8">

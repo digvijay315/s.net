@@ -6,26 +6,27 @@ import { productCategories } from '../data/content'
 
 export default function Products() {
   return (
-    <div>
+    <div className="bg-white text-slate-800">
       <PageHero
         eyebrow="Products"
         title="Genuine hardware, sourced and warrantied"
         description="Cameras, switches, routers and safety equipment from authorised distributors — supplied with installation and after-sales support."
+        bgImage="/images/page-headers/bg-camera.png"
       />
 
       <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8">
         <div className="grid grid-cols-1 gap-7 sm:grid-cols-2">
           {productCategories.map((cat, i) => (
             <Reveal key={cat.title} delay={i * 0.08}>
-              <div className="panel panel-hover h-full p-7">
-                <div className="flex h-14 w-14 items-center justify-center rounded-xl border border-volt-500/30 bg-volt-500/10 text-2xl text-volt-400">
+              <div className="group h-full rounded-2xl border border-slate-200 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-sky-400 hover:shadow-xl">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-blue-200 bg-blue-50 text-2xl text-blue-600 shadow-xs">
                   <FiPackage />
                 </div>
-                <h3 className="mt-6 font-display text-lg font-bold text-white">{cat.title}</h3>
-                <ul className="mt-5 space-y-2.5 border-t border-white/[0.06] pt-5 text-sm text-slate-300">
+                <h3 className="mt-6 font-display text-lg font-extrabold text-slate-900">{cat.title}</h3>
+                <ul className="mt-5 space-y-2.5 border-t border-slate-100 pt-5 text-sm text-slate-700 font-medium">
                   {cat.items.map((item) => (
                     <li key={item} className="flex items-start gap-2.5">
-                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-volt-400" />
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-500" />
                       {item}
                     </li>
                   ))}
